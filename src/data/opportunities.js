@@ -1,9 +1,4 @@
-/* Erasmatch+ — mock dataset
- * All data here is fictional and for demonstration purposes only.
- */
-
-// Erasmus+ Programme & Partner countries (subset, representative)
-const COUNTRIES = [
+export const COUNTRIES = [
   "Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czechia",
   "Denmark", "Estonia", "Finland", "France", "Germany", "Greece",
   "Hungary", "Iceland", "Ireland", "Italy", "Latvia", "Lithuania",
@@ -13,21 +8,22 @@ const COUNTRIES = [
   "Moldova", "Ukraine"
 ];
 
-// Available interest tags for the onboarding chips
-const INTERESTS = [
+export const INTERESTS = [
   "Climate", "Arts", "Sport", "Digital", "Inclusion",
   "Entrepreneurship", "Democracy", "Culture", "Wellbeing", "Volunteering"
 ];
 
-/* Each opportunity:
- *  type:        Youth Exchange | ESC Volunteering | Training Course | Youth Participation | DiscoverEU
- *  minAge/maxAge: eligibility window
- *  country:     hosting country
- *  flag:        emoji flag of host
- *  gradient:    CSS gradient class index (1..6) for the card hero
- *  tags:        interest tags used for soft matching
- */
-const OPPORTUNITIES = [
+export const COUNTRY_FLAGS = {
+  "Austria": "🇦🇹", "Belgium": "🇧🇪", "Bulgaria": "🇧🇬", "Croatia": "🇭🇷", "Cyprus": "🇨🇾", "Czechia": "🇨🇿",
+  "Denmark": "🇩🇰", "Estonia": "🇪🇪", "Finland": "🇫🇮", "France": "🇫🇷", "Germany": "🇩🇪", "Greece": "🇬🇷",
+  "Hungary": "🇭🇺", "Iceland": "🇮🇸", "Ireland": "🇮🇪", "Italy": "🇮🇹", "Latvia": "🇱🇻", "Lithuania": "🇱🇹",
+  "Luxembourg": "🇱🇺", "Malta": "🇲🇹", "Netherlands": "🇳🇱", "North Macedonia": "🇲🇰", "Norway": "🇳🇴",
+  "Poland": "🇵🇱", "Portugal": "🇵🇹", "Romania": "🇷🇴", "Serbia": "🇷🇸", "Slovakia": "🇸🇰", "Slovenia": "🇸🇮",
+  "Spain": "🇪🇸", "Sweden": "🇸🇪", "Türkiye": "🇹🇷", "Albania": "🇦🇱", "Armenia": "🇦🇲", "Georgia": "🇬🇪",
+  "Moldova": "🇲🇩", "Ukraine": "🇺🇦"
+};
+
+export const OPPORTUNITIES = [
   {
     id: "yex-green-roots",
     title: "Green Roots: Youth for Climate",
@@ -44,7 +40,9 @@ const OPPORTUNITIES = [
     gradient: 1,
     tags: ["Climate", "Volunteering", "Wellbeing"],
     summary: "Plant ideas and trees with 30 young people from 6 countries. Workshops on sustainability, permaculture and youth-led climate action.",
-    perks: ["Travel reimbursed up to €275", "Eco-hostel by the forest", "Erasmus+ Youthpass certificate"]
+    perks: ["Travel reimbursed up to €275", "Eco-hostel by the forest", "Erasmus+ Youthpass certificate"],
+    img: "https://picsum.photos/seed/erasmatch1/800/600",
+    color: "#1FB58F"
   },
   {
     id: "esc-coast-care",
@@ -62,7 +60,9 @@ const OPPORTUNITIES = [
     gradient: 2,
     tags: ["Climate", "Inclusion", "Volunteering"],
     summary: "Protect sea turtles and run beach-clean campaigns with a local NGO. Live by the Mediterranean for half a year.",
-    perks: ["€5/day pocket money + meals", "Free accommodation", "Language course included"]
+    perks: ["€5/day pocket money + meals", "Free accommodation", "Language course included"],
+    img: "https://picsum.photos/seed/erasmatch2/800/600",
+    color: "#7B5BE0"
   },
   {
     id: "tc-digital-storytellers",
@@ -80,7 +80,9 @@ const OPPORTUNITIES = [
     gradient: 3,
     tags: ["Digital", "Arts", "Culture"],
     summary: "Level up your video, podcast and social-media skills to tell stories that matter for your community. For youth workers & creators.",
-    perks: ["Pro editing workshops", "Networking with 24 EU creators", "Equipment provided on-site"]
+    perks: ["Pro editing workshops", "Networking with 24 EU creators", "Equipment provided on-site"],
+    img: "https://picsum.photos/seed/erasmatch3/800/600",
+    color: "#2E6FE8"
   },
   {
     id: "yex-stage-without-borders",
@@ -98,7 +100,9 @@ const OPPORTUNITIES = [
     gradient: 4,
     tags: ["Arts", "Culture", "Inclusion"],
     summary: "Use theatre and improv to break stereotypes. No experience needed — just bring your energy and curiosity.",
-    perks: ["Final public performance", "Daily warm-ups with pro actors", "City culture tours"]
+    perks: ["Final public performance", "Daily warm-ups with pro actors", "City culture tours"],
+    img: "https://picsum.photos/seed/erasmatch4/800/600",
+    color: "#FF5A5F"
   },
   {
     id: "tc-young-entrepreneurs",
@@ -116,7 +120,9 @@ const OPPORTUNITIES = [
     gradient: 5,
     tags: ["Entrepreneurship", "Digital", "Wellbeing"],
     summary: "Turn your idea into a pitch in a week. Design thinking, business model canvas, and mentoring from EU startup founders.",
-    perks: ["Mentor matchmaking", "Demo-day pitch event", "Startup hub visits"]
+    perks: ["Mentor matchmaking", "Demo-day pitch event", "Startup hub visits"],
+    img: "https://picsum.photos/seed/erasmatch5/800/600",
+    color: "#003399"
   },
   {
     id: "yp-youth-voices",
@@ -134,7 +140,9 @@ const OPPORTUNITIES = [
     gradient: 6,
     tags: ["Democracy", "Inclusion", "Culture"],
     summary: "Meet MEPs, debate real policy, and co-write recommendations for the future of Europe. Your voice goes straight to decision-makers.",
-    perks: ["European Parliament visit", "Policy lab with experts", "Dialogue with MEPs"]
+    perks: ["European Parliament visit", "Policy lab with experts", "Dialogue with MEPs"],
+    img: "https://picsum.photos/seed/erasmatch6/800/600",
+    color: "#003399"
   },
   {
     id: "yex-move-it",
@@ -152,7 +160,9 @@ const OPPORTUNITIES = [
     gradient: 1,
     tags: ["Sport", "Inclusion", "Wellbeing"],
     summary: "Football, dance and street sports as tools to bring together youth of all backgrounds and abilities. Game on!",
-    perks: ["Beach training sessions", "Inclusive sports workshops", "Tournament with locals"]
+    perks: ["Beach training sessions", "Inclusive sports workshops", "Tournament with locals"],
+    img: "https://picsum.photos/seed/erasmatch7/800/600",
+    color: "#FF5A5F"
   },
   {
     id: "esc-village-makers",
@@ -170,7 +180,9 @@ const OPPORTUNITIES = [
     gradient: 2,
     tags: ["Inclusion", "Culture", "Volunteering"],
     summary: "Help revitalise a Transylvanian village — youth clubs, cultural events and renovation projects with the local community.",
-    perks: ["Pocket money + meals", "Mountain-side housing", "Romanian language course"]
+    perks: ["Pocket money + meals", "Mountain-side housing", "Romanian language course"],
+    img: "https://picsum.photos/seed/erasmatch8/800/600",
+    color: "#7B5BE0"
   },
   {
     id: "tc-mind-matters",
@@ -188,7 +200,9 @@ const OPPORTUNITIES = [
     gradient: 3,
     tags: ["Wellbeing", "Inclusion", "Sport"],
     summary: "Practical tools for youth mental health & resilience. Nature therapy, mindfulness, and peer-support methods — sauna included.",
-    perks: ["Forest wellbeing sessions", "Certified facilitators", "Self-care toolkit to take home"]
+    perks: ["Forest wellbeing sessions", "Certified facilitators", "Self-care toolkit to take home"],
+    img: "https://picsum.photos/seed/erasmatch9/800/600",
+    color: "#1FB58F"
   },
   {
     id: "yex-art-of-recycling",
@@ -206,7 +220,9 @@ const OPPORTUNITIES = [
     gradient: 4,
     tags: ["Climate", "Arts", "Entrepreneurship"],
     summary: "Turn trash into treasure. Upcycling workshops, street-art murals and a pop-up exhibition on the circular economy.",
-    perks: ["Street-art masterclass", "Pop-up gallery night", "Upcycled merch to keep"]
+    perks: ["Street-art masterclass", "Pop-up gallery night", "Upcycled merch to keep"],
+    img: "https://picsum.photos/seed/erasmatch10/800/600",
+    color: "#1FB58F"
   },
   {
     id: "deu-interrail-europe",
@@ -224,7 +240,9 @@ const OPPORTUNITIES = [
     gradient: 5,
     tags: ["Culture", "Wellbeing", "Inclusion"],
     summary: "Got a free travel pass and explore Europe by train. Meet other 18-year-olds, collect stories, and discover the continent your way.",
-    perks: ["Free Interrail-style pass", "Discount card for attractions", "DiscoverEU community access"]
+    perks: ["Free Interrail-style pass", "Discount card for attractions", "DiscoverEU community access"],
+    img: "https://picsum.photos/seed/erasmatch11/800/600",
+    color: "#FFCC00"
   },
   {
     id: "tc-code-for-good",
@@ -242,6 +260,8 @@ const OPPORTUNITIES = [
     gradient: 6,
     tags: ["Digital", "Entrepreneurship", "Climate"],
     summary: "Build a real app for a social cause in a week. Beginner-friendly coding sprints, UX design and a hackathon finale.",
-    perks: ["Mentors from tech NGOs", "Hackathon prizes", "Portfolio project to show off"]
+    perks: ["Mentors from tech NGOs", "Hackathon prizes", "Portfolio project to show off"],
+    img: "https://picsum.photos/seed/erasmatch12/800/600",
+    color: "#2E6FE8"
   }
 ];
