@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Erasmatch+ · Find your Erasmus+ adventure</title>
+<meta name="description" content="Swipe your way to the perfect Erasmus+ Youth opportunity based on your age and country." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Decorative EU-stars backdrop -->
+  <div class="stars-bg" aria-hidden="true"></div>
+
+  <header class="app-header">
+    <div class="logo">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M12 2l2.39 4.84 5.34.78-3.86 3.77.91 5.32L12 14.98l-4.78 2.53.91-5.32L4.27 8.62l5.34-.78L12 2z"/></svg>
+      </span>
+      <h1>Erasmatch<span class="plus">+</span></h1>
+    </div>
+    <p class="tagline">Swipe. Match. Go abroad.</p>
+  </header>
+
+  <main id="app">
+    <!-- STEP 1 — Onboarding -->
+    <section id="onboarding" class="screen active">
+      <div class="onboarding-card">
+        <div class="onboarding-illustration" aria-hidden="true">🌍✨</div>
+        <h2>Find your next adventure</h2>
+        <p class="subtitle">Tell us a bit about you and we'll match you with Erasmus+ Youth opportunities across Europe.</p>
+
+        <form id="profile-form" novalidate>
+          <label class="field">
+            <span class="field-label">Your age</span>
+            <input type="number" id="age" name="age" min="13" max="35" placeholder="e.g. 22" inputmode="numeric" required />
+            <small class="field-hint">Most Erasmus+ Youth activities are for ages 13–30.</small>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Your country</span>
+            <select id="country" name="country" required>
+              <option value="" disabled selected>Choose your country…</option>
+            </select>
+            <small class="field-hint">Programme &amp; Partner countries are supported.</small>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Interests <span class="optional">(optional)</span></span>
+            <div id="interest-chips" class="chips"></div>
+          </label>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            Find my matches
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M4 11h12.17l-5.59-5.59L12 4l8 8-8 8-1.41-1.41L16.17 13H4z"/></svg>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- STEP 2 — Swipe deck -->
+    <section id="swipe" class="screen">
+      <div class="swipe-toolbar">
+        <button id="back-to-profile" class="icon-btn" title="Edit profile" aria-label="Edit profile">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20z"/></svg>
+        </button>
+        <div class="profile-pill" id="profile-pill"></div>
+        <button id="show-likes" class="icon-btn badge-host" title="Saved opportunities" aria-label="Saved opportunities">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span id="likes-badge" class="badge" hidden>0</span>
+        </button>
+      </div>
+
+      <div id="deck" class="deck"><!-- cards injected here --></div>
+
+      <div id="deck-empty" class="deck-empty" hidden>
+        <div class="deck-empty-emoji">🎉</div>
+        <h3>That's everyone for now!</h3>
+        <p>You've swiped through all matches for your profile.</p>
+        <button id="restart-deck" class="btn btn-ghost">Swipe again</button>
+      </div>
+
+      <div class="swipe-actions" id="swipe-actions">
+        <button id="btn-nope" class="action action-nope" title="Pass" aria-label="Pass">
+          <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M18.3 5.71L12 12.01l-6.3-6.3-1.42 1.42 6.3 6.3-6.3 6.3 1.42 1.42 6.3-6.3 6.3 6.3 1.42-1.42-6.3-6.3 6.3-6.3z"/></svg>
+        </button>
+        <button id="btn-info" class="action action-info" title="Details" aria-label="Details">
+          <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+        </button>
+        <button id="btn-like" class="action action-like" title="Save / Apply" aria-label="Save">
+          <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 3 — Saved list -->
+    <section id="likes" class="screen">
+      <div class="likes-header">
+        <button id="back-to-swipe" class="icon-btn" aria-label="Back to swiping">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20z"/></svg>
+        </button>
+        <h2>Your saved opportunities</h2>
+      </div>
+      <div id="likes-list" class="likes-list"></div>
+      <div id="likes-empty" class="likes-empty">
+        <div class="deck-empty-emoji">💛</div>
+        <p>Nothing saved yet. Swipe right on projects you love!</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Detail modal -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" data-close aria-label="Close">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <p>Erasmatch<span class="plus">+</span> · a concept mockup · Co-funded by imagination 💙💛</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
